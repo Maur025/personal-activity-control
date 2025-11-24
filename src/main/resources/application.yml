@@ -1,0 +1,42 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+app-data:
+  info:
+    title: ${APP_TITLE:ACTIVITY CONTROL API}
+    description: ${APP_DESCRIPTION:Activity Control operational API}
+    version: ${APP_VERSION:develop}
+
+spring:
+  application:
+    name: activity-control
+
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.xml
+    default-schema: ${DB_SCHEMA:public}
+
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: validate
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+    properties:
+      hibernate:
+        default_schema: ${DB_SCHEMA:public}
+        #type:
+        #  json_format_mapper: com.maur025.activitycontrol.jpa.module.config.HibernateFormatMapper
+        format_sql: false
+        dialect: com.maur025.activitycontrol.config-module.PGDialect
+        jdbc:
+          time_zone: UTC
+        connection:
+          characterEncoding: UTF-8
+          charSet: UTF-8
+          useUnicode: true
