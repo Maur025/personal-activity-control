@@ -1,6 +1,6 @@
 package com.maur025.activitycontrol.jpa.module.config
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
+import org.springframework.beans.factory.ObjectProvider
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.data.domain.AuditorAware
@@ -12,8 +12,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement
 @EnableJpaAuditing(auditorAwareRef = "auditorAware")
 class JpaConfig {
     @Bean
-    @ConditionalOnMissingBean
-    fun auditorAware(): AuditorAware<String> {
-        return AuditorAwareImpl();
-    }
+    fun auditorAware(
+        provider: ObjectProvider<AuditorAware<String>>
+    ): AuditorAware<String> = provider.getIfAvailable { AuditorAwareImpl() }
 }

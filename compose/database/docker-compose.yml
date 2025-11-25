@@ -1,0 +1,22 @@
+services:
+  activity-control-db:
+    image: ${POSTGRESQL_IMAGE}
+    restart: unless-stopped
+    hostname: activity-control-db
+    container_name: activity-control-db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - activity-control-db:/var/lib/postgresql/data
+      - ./init-user-db.sh:/docker-entrypoint-initdb.d/init-user-db.sh
+      - ./dumps:/dumps
+
+volumes:
+  activity-control-db:
+    name: activity-control-db
+
+networks:
+  compose-net:
+    external: true

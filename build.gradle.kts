@@ -23,10 +23,17 @@ dependencies {
     /* packages to App */
     implementation("org.springframework.boot:spring-boot-starter-webmvc")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    // Liquibase
     implementation("org.liquibase:liquibase-core")
-    implementation("com.vladmihalcea:hibernate-types-60:2.21.1")
+    // Hibernate
+    implementation("org.hibernate.orm:hibernate-core")
+    // Jackson
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
+    // Kotlin
     implementation("org.jetbrains.kotlin:kotlin-reflect")
+    // Database
+    implementation("org.postgresql:postgresql")
 
     /* packages to test */
     testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")

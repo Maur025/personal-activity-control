@@ -30,13 +30,24 @@ spring:
     properties:
       hibernate:
         default_schema: ${DB_SCHEMA:public}
-        #type:
-        #  json_format_mapper: com.maur025.activitycontrol.jpa.module.config.HibernateFormatMapper
+        type:
+          json_format_mapper: com.maur025.activitycontrol.jpa.module.config.HibernateFormatMapper
         format_sql: false
-        dialect: com.maur025.activitycontrol.config-module.PGDialect
+        dialect: com.maur025.activitycontrol.postgresql.module.config.PGDialect
         jdbc:
           time_zone: UTC
         connection:
           characterEncoding: UTF-8
           charSet: UTF-8
           useUnicode: true
+
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:activity_control_db}
+    username: ${DB_USERNAME:dbusr}
+    password: ${DB_PASSWORD:dbpass}
+    hikari:
+      connection-timeout: 30000
+      idle-timeout: 30000
+      max-lifetime: 60000
+      minimum-idle: 5
+      maximum-pool-size: 50
