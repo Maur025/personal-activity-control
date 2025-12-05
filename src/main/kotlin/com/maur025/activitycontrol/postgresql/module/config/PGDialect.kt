@@ -18,6 +18,5 @@ class PGDialect : PostgreSQLDialect() {
 
             registry.register("sum", StandardSQLFunction("sum", StandardBasicTypes.STRING))
         }
-
     }
 }

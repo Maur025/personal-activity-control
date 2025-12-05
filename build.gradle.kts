@@ -34,11 +34,18 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     // Database
     implementation("org.postgresql:postgresql")
+    //security
+    implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
+    // webflux
+    implementation("org.springframework.boot:spring-boot-starter-webflux")
 
     /* packages to test */
     testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+    testRuntimeOnly("io.kotest:kotest-assertions-core:6.0.5")
 }
 
 kotlin {
