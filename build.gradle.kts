@@ -39,6 +39,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
     // webflux
     implementation("org.springframework.boot:spring-boot-starter-webflux")
+    // logger
+    implementation("io.github.oshai:kotlin-logging:7.0.7")
 
     /* packages to test */
     testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
